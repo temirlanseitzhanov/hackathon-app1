@@ -273,7 +273,7 @@ header {
 .container {
     padding-bottom: 80px; /* Подбери нужное значение */
   }
-  
+
 .container {
     min-height: calc(100vh - 100px); /* 100px – высота нижнего меню */
   }
@@ -281,4 +281,21 @@ header {
 html, body {
     overflow-y: auto;
   }
-  
+
+  body, .container {
+    overflow: visible;
+  }
+  .container {
+    height: auto;
+    min-height: 100vh;
+    padding-bottom: 80px; /* подстраивай */
+  }
+  html, body {
+    height: 100%;
+  }
+  .bottom-menu {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+        
