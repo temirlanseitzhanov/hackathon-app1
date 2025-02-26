@@ -298,4 +298,24 @@ html, body {
     bottom: 0;
     width: 100%;
   }
+
+  .container {
+    padding-bottom: 80px; /* Увеличь, если нужно */
+  }
+  .bottom-menu {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #fff; /* Или цвет фона */
+  }
+  html, body {
+    height: 100%;
+    overflow-x: hidden;
+  }
+  .main-content {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
         
