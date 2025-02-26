@@ -75,10 +75,11 @@ h2 {
     flex-shrink: 0;
     margin-bottom: 15px; /* Добавлен отступ между карточками */
     position: relative;
+    margin-right: 10px; /* Добавлен стандартный отступ между карточками */
 }
 
-.grid-item:not(:last-child) {
-    margin-right: -30px; /* Вторая карточка слегка выпирает справа */
+.grid-item:last-child {
+    margin-right: 0; /* Чтобы последний элемент не имел дополнительного отступа */
 }
 
 /* Нижнее меню */
