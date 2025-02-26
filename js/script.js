@@ -18,3 +18,15 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    const tg = window.Telegram.WebApp;
+
+    tg.expand(); // Разворачивает мини-приложение на весь экран
+
+    // Меняет цвет заголовка и фона в Telegram
+    tg.setHeaderColor("#ffffff");
+    tg.setBackgroundColor("#f8f8f8");
+
+    console.log("Telegram WebApp API подключен");
+});
