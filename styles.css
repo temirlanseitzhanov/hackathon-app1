@@ -269,3 +269,7 @@ header {
     object-fit: cover;
     border-radius: 10px;
 }
+
+.container {
+    padding-bottom: 80px; /* Учитывает высоту нижнего навбара */
+}
