@@ -318,4 +318,14 @@ html, body {
     flex-direction: column;
     min-height: 100vh;
   }
-        
+  .card {
+    height: 120px; /* Попробуй уменьшить, например 100px */
+  }
+  .card {
+    margin-bottom: 10px; /* Уменьши, если есть большие отступы */
+  }
+  .main-content {
+    max-height: calc(100vh - 80px); /* Вычитаем высоту нижнего меню */
+    overflow-y: auto;
+  }
+      
