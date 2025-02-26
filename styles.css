@@ -59,6 +59,7 @@ h2 {
     padding-bottom: 10px;
     scrollbar-width: none;
     -ms-overflow-style: none;
+    padding-left: 10px; /* Чтобы карточки не прижимались к краю */
 }
 
 .scroll-container::-webkit-scrollbar {
@@ -67,12 +68,17 @@ h2 {
 
 /* Карточки */
 .grid-item {
-    min-width: 35%;
+    width: 80%; /* Делаем карточки шире, чтобы они напоминали оригинальный дизайн */
     height: 200px; /* Уменьшенная высота карточек */
     background-color: #ddd;
     border-radius: 10px;
     flex-shrink: 0;
     margin-bottom: 15px; /* Добавлен отступ между карточками */
+    position: relative;
+}
+
+.grid-item:not(:last-child) {
+    margin-right: -30px; /* Вторая карточка слегка выпирает справа */
 }
 
 /* Нижнее меню */
