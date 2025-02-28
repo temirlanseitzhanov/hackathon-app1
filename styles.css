@@ -47,17 +47,15 @@ main {
 
 h2 {
     font-size: 16px;
-    margin-bottom: 8px;
+    margin-bottom: 2px;
 }
 
-/* Горизонтальный скролл */
 .scroll-container {
     display: flex;
     overflow-x: auto;
     gap: 10px;
-    padding-bottom: 10px;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
+    padding: 2px; /* Добавляем отступы внутри контейнера */
+    border-radius: 10px; /* Закругляем края */
 }
 
 .scroll-container::-webkit-scrollbar {
@@ -175,7 +173,7 @@ h2 {
 
 .grid-item {
     width: 80%;
-    height: 200px;
+    height: 170px;
     border-radius: 10px;
     overflow: hidden; /* Обрезаем лишнее */
     position: relative;
@@ -198,3 +196,24 @@ main {
     overflow-y: auto; /* Делаем основное содержимое прокручиваемым */
     padding-bottom: 80px; /* Чтобы не перекрывалось нижним меню */
 }
+
+.grid-item {
+    background-color: white; /* Карточки остаются белыми */
+    padding: 1px;
+    border-radius: 10px;
+    border: 2px solid #6f42c1 /* Цвет рамки вокруг карточек */
+}
+.category-frame {
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #f9f9f9;
+}
+
+.category-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
