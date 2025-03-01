@@ -136,9 +136,9 @@ function renderEvents() {
         formatElement.textContent = event.format;
         
         // Добавляем обработчик клика
-        cardElement.addEventListener('click', () => {
-            openEventDetails(event.id);
-        });
+        //cardElement.addEventListener('click', () => {
+        //   openEventDetails(event.id);
+        // });
         
         // Добавляем в DOM
         eventsListElement.appendChild(eventCard);
