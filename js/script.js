@@ -202,7 +202,7 @@ function initEventListeners() {
     document.querySelector('.bottom-nav').addEventListener('click', handleNavClick);
     
     // Клик по иконке уведомлений
-    notificationIconElement.addEventListener('click', showNotifications);
+    //notificationIconElement.addEventListener('click', showNotifications);
 }
 
 // Инициализация приложения
