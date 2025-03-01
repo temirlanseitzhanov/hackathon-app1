@@ -3,75 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hackathon App</title>
+    <title>Платформа хакатонов</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <div class="profile">
-            <img src="img/ae4134169130626f5a6ff03cd06719fb.png" alt="Аватар">
-            <span>Oralbek</span>
+    <div class="app-container">
+        <!-- Верхняя панель с аватаром, именем пользователя и уведомлениями -->
+        <header class="header">
+            <div class="user-info">
+                <div class="avatar" id="userAvatar"></div>
+                <span class="username" id="userName">Сейтжанов Темирлан</span>
+            </div>
+            <div class="notification-icon" id="notificationIcon">
+                <i class="fas fa-bell"></i>
+                <span class="notification-badge" id="notificationBadge">2</span>
+            </div>
+        </header>
+
+        <!-- Центральная часть - лента событий -->
+        <main class="content">
+            <h1>Предстоящие события</h1>
+            
+            <!-- Фильтры -->
+            <div class="filters" id="filters">
+                <button class="active" data-filter="all">Все</button>
+                <button data-filter="hackathon">Хакатоны</button>
+                <button data-filter="casecamp">Кейс-чемпионаты</button>
+                <button data-filter="webinar">Вебинары</button>
+            </div>
+
+            <!-- Карточки событий -->
+            <div class="events-list" id="eventsList">
+                <!-- Здесь будут карточки событий -->
+            </div>
+
+            <!-- Если нет событий -->
+            <div class="no-events" id="noEvents" style="display: none;">
+                <p>Нет предстоящих мероприятий выбранного типа</p>
+            </div>
+        </main>
+
+        <!-- Нижняя навигационная панель -->
+        <nav class="bottom-nav">
+            <div class="nav-item active" data-nav="main">
+                <i class="fas fa-home"></i>
+                <span>Главная</span>
+            </div>
+            <div class="nav-item" data-nav="hackathons">
+                <i class="fas fa-laptop-code"></i>
+                <span>Хакатоны</span>
+            </div>
+            <div class="nav-item" data-nav="shop">
+                <i class="fas fa-shopping-cart"></i>
+                <span>Магазин</span>
+            </div>
+            <div class="nav-item" data-nav="rating">
+                <i class="fas fa-trophy"></i>
+                <span>Рейтинг</span>
+            </div>
+            <div class="nav-item" data-nav="profile">
+                <i class="fas fa-user"></i>
+                <span>Профиль</span>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Шаблон карточки события -->
+    <template id="eventCardTemplate">
+        <div class="event-card">
+            <div class="event-image">
+                <div class="event-type"></div>
+            </div>
+            <div class="event-info">
+                <h2 class="event-title"></h2>
+                <div class="event-date">
+                    <i class="fas fa-calendar"></i>
+                    <span class="date-text"></span>
+                </div>
+                <div class="event-participants">
+                    <i class="fas fa-users"></i>
+                    <span class="participants-text"></span>
+                </div>
+                <div class="event-format">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span class="format-text"></span>
+                </div>
+            </div>
         </div>
-        <div class="notifications">
-            <img src="icons/notifications.svg" alt="Уведомления">
-        </div>
-    </header>
-    
-    <main>
-        <section class="category-frame">
-            <div class="category-title">Новости</div>
-            <div class="scroll-container">
-                <div class="grid-item"><img src="/img/3t32t2t23t.jpg" alt="Новость 1"></div>
-                <div class="grid-item"><img src="img/SEI_167917530.webp" alt="Новость 2"></div>
-                <div class="grid-item"><img src="img/news3.jpg" alt="Новость 3"></div>
-                <div class="grid-item"><img src="img/news4.jpg" alt="Новость 4"></div>
-            </div>
-        </section>
-    
-        <section class="category-frame">
-            <div class="category-title">Хакатоны</div>
-            <div class="scroll-container">
-                <div class="grid-item"><img src="img/4bFStk3lq76XV1A1P9AqOp4gLHIK1tx2u4zNXBx9ZfzApi1aFjYcYyvov1mKWz21uIymkEIMI-jiBwdnZYyCzTGK.jpg" alt="Хакатон 1"></div>
-                <div class="grid-item"><img src="img/1613318203099.png" alt="Хакатон 2"></div>
-                <div class="grid-item"><img src="img/hackathon3.jpg" alt="Хакатон 3"></div>
-                <div class="grid-item"><img src="img/hackathon4.jpg" alt="Хакатон 4"></div>
-            </div>
-        </section>
-    
-        <section class="category-frame">
-            <div class="category-title">Кейс-чемпионаты</div>
-            <div class="scroll-container">
-                <div class="grid-item"><img src="img/624adf652f1ea646225892.png" alt="Кейс 1"></div>
-                <div class="grid-item"><img src="/img/MIT-Coding-Brain-01-press_0.jpg" alt="Кейс 2"></div>
-                <div class="grid-item"><img src="img/case3.jpg" alt="Кейс 3"></div>
-                <div class="grid-item"><img src="img/case4.jpg" alt="Кейс 4"></div>
-            </div>
-        </section>
-    </main>
-    
-    <nav class="bottom-nav">
-        <a href="#home" class="nav-item active">
-            <img src="icons/home.svg" alt="Главная">
-            <span>Главная</span>
-        </a>
-        <a href="#hackathons" class="nav-item">
-            <img src="icons/hackathon.svg" alt="Хакатоны">
-            <span>Хакатоны</span>
-        </a>
-        <a href="#shop" class="nav-item">
-            <img src="icons/shop.svg" alt="Магазин">
-            <span>Магазин</span>
-        </a>
-        <a href="#rating" class="nav-item">
-            <img src="icons/rating.svg" alt="Рейтинг">
-            <span>Рейтинг</span>
-        </a>
-        <a href="#profile" class="nav-item">
-            <img src="icons/profile.svg" alt="Профиль">
-            <span>Профиль</span>
-        </a>
-    </nav>
-    
+    </template>
+
     <script src="js/script.js"></script>
 </body>
 </html>
