@@ -13,29 +13,33 @@ exports.handler = async (event) => {
             throw new Error("BOT_TOKEN не задан. Добавьте его в переменные окружения Netlify.");
         }
 
-        // Отвечаем только на команду /start
+        // Если пользователь отправил /start, отправляем кнопку Mini App
         if (messageText === "/start") {
             await axios.post(`https://api.telegram.org/bot${botToken}/sendMessage`, {
                 chat_id: chatId,
-                text: "🎮 Нажмите 'Play', чтобы запустить приложение!",
+                text: "Добро пожаловать! Запустите Mini App 👇",
                 reply_markup: {
-                    keyboard: [
+                    inline_keyboard: [
                         [
                             {
-                                text: "▶️ Play",
+                                text: "🚀 Открыть Mini App",
                                 web_app: { url: "https://shimmering-travesseiro-b15efa.netlify.app/" }
                             }
                         ]
-                    ],
-                    resize_keyboard: true, // Делаем клавиатуру компактной
-                    one_time_keyboard: false // Клавиатура останется видимой
+                    ]
                 }
             });
 
-            return { statusCode: 200, body: JSON.stringify({ success: true, message: "Кнопка 'Play' отправлена" }) };
+            return { statusCode: 200, body: JSON.stringify({ success: true, message: "Mini App кнопка отправлена" }) };
         }
 
-        return { statusCode: 200, body: JSON.stringify({ success: true, message: "Сообщение проигнорировано" }) };
+        // Обычный ответ на другие сообщения
+        await axios.post(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+            chat_id: chatId,
+            text: `Вы сказали: ${messageText}`
+        });
+
+        return { statusCode: 200, body: JSON.stringify({ success: true, message: "Сообщение обработано!" }) };
     } catch (error) {
         console.error("Ошибка обработки запроса:", error);
         return { statusCode: 500, body: JSON.stringify({ success: false, error: error.message }) };
