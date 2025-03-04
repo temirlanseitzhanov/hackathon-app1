@@ -13,7 +13,7 @@ exports.handler = async (event) => {
             throw new Error("BOT_TOKEN не задан. Добавьте его в переменные окружения Netlify.");
         }
 
-        // Если пользователь отправил /start, отправляем кнопку Mini App
+        // Отвечаем только на команду /start
         if (messageText === "/start") {
             await axios.post(`https://api.telegram.org/bot${botToken}/sendMessage`, {
                 chat_id: chatId,
@@ -33,13 +33,8 @@ exports.handler = async (event) => {
             return { statusCode: 200, body: JSON.stringify({ success: true, message: "Mini App кнопка отправлена" }) };
         }
 
-        // Обычный ответ на другие сообщения
-        await axios.post(`https://api.telegram.org/bot${botToken}/sendMessage`, {
-            chat_id: chatId,
-            text: `Вы сказали: ${messageText}`
-        });
-
-        return { statusCode: 200, body: JSON.stringify({ success: true, message: "Сообщение обработано!" }) };
+        // Если сообщение не /start, просто игнорируем его
+        return { statusCode: 200, body: JSON.stringify({ success: true, message: "Сообщение проигнорировано" }) };
     } catch (error) {
         console.error("Ошибка обработки запроса:", error);
         return { statusCode: 500, body: JSON.stringify({ success: false, error: error.message }) };
