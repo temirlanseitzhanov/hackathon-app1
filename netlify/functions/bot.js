@@ -17,23 +17,24 @@ exports.handler = async (event) => {
         if (messageText === "/start") {
             await axios.post(`https://api.telegram.org/bot${botToken}/sendMessage`, {
                 chat_id: chatId,
-                text: "Добро пожаловать! Запустите Mini App 👇",
+                text: "🎮 Нажмите 'Play', чтобы запустить приложение!",
                 reply_markup: {
-                    inline_keyboard: [
+                    keyboard: [
                         [
                             {
-                                text: "🚀 Открыть Mini App",
+                                text: "▶️ Play",
                                 web_app: { url: "https://shimmering-travesseiro-b15efa.netlify.app/" }
                             }
                         ]
-                    ]
+                    ],
+                    resize_keyboard: true, // Делаем клавиатуру компактной
+                    one_time_keyboard: false // Клавиатура останется видимой
                 }
             });
 
-            return { statusCode: 200, body: JSON.stringify({ success: true, message: "Mini App кнопка отправлена" }) };
+            return { statusCode: 200, body: JSON.stringify({ success: true, message: "Кнопка 'Play' отправлена" }) };
         }
 
-        // Если сообщение не /start, просто игнорируем его
         return { statusCode: 200, body: JSON.stringify({ success: true, message: "Сообщение проигнорировано" }) };
     } catch (error) {
         console.error("Ошибка обработки запроса:", error);
